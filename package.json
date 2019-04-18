@@ -1,0 +1,30 @@
+{
+	"name": "parserm3u",
+	"version": "1.0.0",
+	"description": "parser",
+	"main": "main.js",
+	"scripts": {
+		"dev": "webpack --mode development",
+		"prod": "webpack --mode production",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [
+		"parser"
+	],
+	"author": "scorpion",
+	"license": "ISC",
+	"dependencies": {
+		"clean-webpack-plugin": "^2.0.1",
+		"copy-webpack-plugin": "^5.0.2",
+		"css-loader": "^2.1.1",
+		"html-webpack-plugin": "^3.2.0",
+		"style-loader": "^0.23.1",
+		"stylus": "^0.54.5",
+		"stylus-loader": "^3.0.2",
+		"webpack": "^4.30.0"
+	},
+	"devDependencies": {
+		"source-map-loader": "^0.2.4",
+		"webpack-cli": "^3.3.0"
+	}
+}

@@ -1,0 +1,40 @@
+.list_m3u
+	background #eee
+	padding 5px
+	margin 0
+	list-style: none
+	&:empty
+		display none
+	li
+		display block
+		padding 5px
+		border-bottom 1px solid #fff
+		&:nth-child(2n)
+			background #eaeaea
+		div
+			display inline-block
+			font-size 16px
+		.path
+			display block
+			font-size 12px
+		.alias
+			padding 0 50px 10px 5%
+		.time
+			float right
+
+.loader
+	float right
+	display none
+	background linear-gradient(45deg, green 0%,#FFF 90%,green 100%)
+	width 20px
+	height 20px
+	border-radius 50%
+	transition all 0.5s ease
+	animation rotate 1s linear infinite
+
+
+@keyframes rotate {
+	from {
+		transform rotate(-360deg)
+	}
+}
