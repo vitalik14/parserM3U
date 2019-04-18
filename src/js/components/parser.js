@@ -6,13 +6,13 @@ const _parsingValidFile = (arrLines, playlist) => {
 	let line = false;
 
 	for (let i = 0; i < arrLines.length; i++) {
-		if (arrLines[i].includes(CONFIGS.codeComment)) {
+		if (arrLines[i].includes(CONFIGS.codeComment)) { // check comment line
 			line = arrLines[i];
 
-		} else if (!!arrLines[i].trim().length) {
+		} else if (!!arrLines[i].trim().length) { // check path file
 			const path = arrLines[i].trim();
 			let time, alias;
-			let [hour, min] = ['--', '--'];
+			let [hour, min] = ['--', '--']; // default time string
 
 			if (line) {
 				try {
@@ -24,22 +24,23 @@ const _parsingValidFile = (arrLines, playlist) => {
 
 			if (parseInt(time)) {
 				let rawTime = (time / 60).toFixed(2);
-
+				//parse time a in comment line
 				[hour, min] = [0 | rawTime, 0 | rawTime.split('.')[1] / 100 * 60];
 				min = min < 10 ? `0${min}` : min;
 			}
 
 			if (!alias) {
+				// if path is local
 				try {
 					let arrPartPath = String.raw`${path}`.split('\\');
 					alias = arrPartPath[arrPartPath.length - 1].split('.')[0];
 				} catch (e) {
-					alias = 'Unknown';
+					alias = CONFIGS.defaultAlias;
 				}
-			} else if (alias.includes('http')) {
+			} else if (alias.includes('http')) { // if path is url
 				alias = path;
 			}
-
+			// add item in playlist
 			playlist.push({
 				alias,
 				time: `${hour} : ${min}`,
@@ -62,6 +63,8 @@ let parse = function ({ target: { result }, total }) {
 	if (rawFile.length > 1 && CONFIGS.allowFormat.some((el) => rawFile[0].includes(el))) {
 		let validError = false;
 		Message('Плейлист загружен');
+
+		// decode files m3u|| m3u8
 		try {
 			arrLines = decodeURIComponent(escape(window.atob(rawFile[1]))).split(/\n/);
 		} catch (e) {
@@ -77,12 +80,14 @@ let parse = function ({ target: { result }, total }) {
 			}
 		}
 		if ((arrLines.length && (arrLines.shift()).trim() === CONFIGS.codeHeadline)) {
+			// main parse
 			_parsingValidFile(arrLines, playlist);
 		} else {
 			Message('Неправильный формат плейлиста', 1);
 		}
 
 		this.fileReader.removeEventListener('loadend', parse);
+		//added to dom
 		Dom.render(playlist);
 
 	} else {

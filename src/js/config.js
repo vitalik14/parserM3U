@@ -6,5 +6,7 @@ export const CONFIGS = {
 	delimiterFormat: 'base64,',
 	codeHeadline: '#EXTM3U',
 	codeComment: '#EXTINF',
-	allowFormat: ['audio/mpegurl', 'audio/x-mpegurl', 'application/x-mpegurl']
+	allowFormat: ['audio/mpegurl', 'audio/x-mpegurl', 'application/x-mpegurl'],
+	maxSizeFile: 1000000,
+	defaultAlias: 'Unknown'
 };

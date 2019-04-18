@@ -15,15 +15,17 @@ let loader = (status) => {
 CONFIGS.elInput.addEventListener('change', function file({ target }) {
 	const files = (target || window.event.srcElement).files;
 
-	if (FileReader && files && files.length) {
+	if (FileReader && files && files.length) { //check is there a file
 		const fileReader = new FileReader();
 		loader(true);
 
 		fileReader.addEventListener('loadend', Parser.parse.bind({ fileReader, loader }));
 		fileReader.addEventListener('load', function ({ total }) {
-			if (total > 1000000) {
+			// if big file skip
+			if (total > CONFIGS.maxSizeFile) {
 				loader(false);
 				Message('Плейлист слишком большой', 1);
+
 				this.abort();
 			}
 		});
