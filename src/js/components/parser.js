@@ -5,7 +5,7 @@ import { Dom } from './m3uInDom';
 const _parsingValidFile = (arrLines, playlist) => {
 	let line = false;
 
-	for (let i = 1; i < arrLines.length; i++) {
+	for (let i = 0; i < arrLines.length; i++) {
 		if (arrLines[i].includes(CONFIGS.codeComment)) {
 			line = arrLines[i];
 
