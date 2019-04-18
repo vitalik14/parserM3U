@@ -30,8 +30,12 @@ const _parsingValidFile = (arrLines, playlist) => {
 			}
 
 			if (!alias) {
-				let arrPartPath = String.raw`${path}`.split('\\');
-				alias = arrPartPath[arrPartPath.length - 1].split('.')[0];
+				try {
+					let arrPartPath = String.raw`${path}`.split('\\');
+					alias = arrPartPath[arrPartPath.length - 1].split('.')[0];
+				} catch (e) {
+					alias = 'Unknown';
+				}
 			} else if (alias.includes('http')) {
 				alias = path;
 			}
