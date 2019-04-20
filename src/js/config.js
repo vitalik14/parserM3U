@@ -1,10 +1,9 @@
-const id = document.getElementById;
 
 export const CONFIGS = {
-	elInput: id('file'),
-	elMessage: id('message'),
-	elList: id('list_m3u'),
-	loader: id('loader'),
+	elInput: document.getElementById('file'),
+	elMessage: document.getElementById('message'),
+	elList: document.getElementById('list_m3u'),
+	loader: document.getElementById('loader'),
 	delimiterFormat: 'base64,',
 	codeHeadline: '#EXTM3U',
 	codeComment: '#EXTINF',
