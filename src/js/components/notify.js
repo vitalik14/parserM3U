@@ -1,7 +1,7 @@
 
 import { CONFIGS } from '../config';
 
-export const Message = function (text, error) {
+export const Message = (text, error) => {
 	CONFIGS.elMessage.style.color = error ? 'red' : 'green';
 	CONFIGS.elMessage.innerHTML = text || '';
 }

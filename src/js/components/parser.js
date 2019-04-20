@@ -52,7 +52,7 @@ const _parsingValidFile = (arrLines, playlist) => {
 	}
 }
 
-let parse = function ({ target: { result }, total }) {
+const parse = function ({ target: { result } }) {
 	let arrLines;
 	let playlist = [];
 	const rawFile = result.split(CONFIGS.delimiterFormat);

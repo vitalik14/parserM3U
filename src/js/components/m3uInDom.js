@@ -8,7 +8,7 @@ const render = (list = []) => {
 	clear();
 
 	list.forEach((el, i) => {
-		let node = document.createElement('li');
+		const node = document.createElement('li');
 
 		node.innerHTML = `
 			<div class="index">${i + 1}</div>
@@ -20,7 +20,7 @@ const render = (list = []) => {
 	});
 };
 
-export let Dom = {
+export const Dom = {
 	clear,
 	render
 }
