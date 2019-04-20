@@ -1,4 +1,4 @@
-let id = (el) => document.getElementById(el);
+const id = (el) => document.getElementById(el);
 
 export const CONFIGS = {
 	elInput: id('file'),
