@@ -18,7 +18,7 @@ CONFIGS.elInput.addEventListener('change', function file({ target }) {
 	if (FileReader && files && files.length) { //check is there a file
 
 		if (files[0].size > CONFIGS.maxSizeFile) {// if big file skip
-			Message(`Плейлист слишком большой (max: ${0 | (CONFIGS.maxSizeFile / 1024)} кб)`, 1);
+			Message(`Файл слишком большой (max: ${0 | (CONFIGS.maxSizeFile / 1024)} кб)`, 1);
 			return false;
 		}
 
@@ -28,12 +28,12 @@ CONFIGS.elInput.addEventListener('change', function file({ target }) {
 		fileReader.addEventListener('loadend', Parser.parse.bind({ fileReader, loader }));
 
 		fileReader.addEventListener('error', e => {
-			Message(`Ошибка чтения плейлиста ${e}`, 1);
+			Message(`Ошибка чтения файла ${e}`, 1);
 			loader(false);
 		});
 
 		fileReader.addEventListener('abort', e => {
-			Message(`Ошибка при загрузке ${e}`, 1);
+			Message(`Загрузка прервана ${e}`, 1);
 			loader(false);
 		});
 
